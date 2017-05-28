@@ -1,6 +1,5 @@
 var app = require('express')();
 var http = require('http').Server(app);
-app.set('port', 5000);
 
 var io = require('socket.io')(http);
 
@@ -19,6 +18,6 @@ io.on('connection', function(socket) {
   io.emit('message', 'User ' + user + ' has connected');
 });
 
-http.listen(3000, function() {
+http.listen(process.env.PORT || 3000, function() {
   console.log("Started server");
 });
